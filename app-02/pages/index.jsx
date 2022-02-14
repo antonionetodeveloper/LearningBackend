@@ -22,7 +22,7 @@ export default function Home() {
         setPassHandle('')
         
         if(response.status == 201){
-          window.location.href = "http://localhost:3000/dashboard";
+          window.location.href = "https://login-system-omega.vercel.app/dashboard";
         }else{
           alert("Usuário ou senha incorreta.")
         }

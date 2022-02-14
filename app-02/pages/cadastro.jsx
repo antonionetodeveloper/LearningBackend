@@ -48,7 +48,7 @@ export default function SignUp(){
       login: UserLogin,
       password: pass
     }) 
-		window.location.replace("http://localhost:3000");
+		window.location.replace("https://login-system-omega.vercel.app/");
 		alert("Conta criada com sucesso!")
   }
 
