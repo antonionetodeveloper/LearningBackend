@@ -12,34 +12,37 @@ import { useState } from 'react'
 export default function Home() {
 
   async function checkIfUserExists(){
-
-    try{
-      const response = await Axios.post("http://localhost:3001/login", {
-        recivedLogin: login,
-        recivedPassword: pass
-      })
-      setLoginHandle('')
-      setPassHandle('')
-      
-      if(response.status == 201){
-        window.location.href = "http://localhost:3000/dashboard";
-      }else{
-        alert("Usuário ou senha incorreta.")
+    if(login != ''){
+      try{
+        const response = await Axios.post("https://loginsystemlib.herokuapp.com/login", {
+          recivedLogin: login,
+          recivedPassword: pass
+        })
+        setLoginHandle('')
+        setPassHandle('')
+        
+        if(response.status == 201){
+          window.location.href = "http://localhost:3000/dashboard";
+        }else{
+          alert("Usuário ou senha incorreta.")
+        }
+        
       }
-      
+      catch(error){
+        console.log(error)
+      }
     }
-    catch(error){
-      console.log(error)
+    else{
+      alert("Preencha os dados")
     }
-
   }
 
-  const [login, setLogin] = useState()
+  const [login, setLogin] = useState('')
   function setLoginHandle(state){
     setLogin(state)
   }
 
-  const [pass, setPass]   = useState()
+  const [pass, setPass]   = useState('')
   function setPassHandle(state){
     setPass(state)
   }

@@ -23,6 +23,7 @@ export const Main = styled.main`
 
 			background-color: #DDBEA9;
 			color: #6B705C;
+			box-shadow: #A5A58D 10px 9px 30px, #FFE8D6 -5px -5px 30px;
 
 			padding: 5vw;
 			border-radius: 1vw;
@@ -32,7 +33,7 @@ export const Main = styled.main`
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-
+				
 				h1{
 					margin: 0px;
 					font-size: 5vw;
@@ -41,6 +42,7 @@ export const Main = styled.main`
 				div{
 					display: flex;
 					flex-direction: column;
+					box-shadow: none;
 					padding: 1vw;
 					gap: 2vw;
 

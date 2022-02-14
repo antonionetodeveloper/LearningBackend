@@ -8,19 +8,24 @@ import { useState } from 'react'
 import { Button } from '../styles/components/button'
 
 
-export default function signUp(){
-	const [UserLogin, setLogin] = useState()
+export default function SignUp(){
+	const [UserName, setName] = useState('')
+  function setNameHandle(state){
+    setName(state)
+  }
+
+	const [UserLogin, setLogin] = useState('')
   function setLoginHandle(state){
     setLogin(state)
   }
 
   
-	const [pass, setPass] = useState()
+	const [pass, setPass] = useState('')
   function setPassHandle(state){
     setPass(state)
   }
 
-	const [confirmPass, setConfirmPass] = useState()
+	const [confirmPass, setConfirmPass] = useState('')
 	function setConfirmPassHandle(state){
     setConfirmPass(state)
   }
@@ -28,15 +33,18 @@ export default function signUp(){
 
 	function chekPassword(password1, password2){
 		if(password1 === password2){
-			sendFormToDB() 
+			sendFormToDB()
 		}
-		else(alert("The passwords don't match"))
+		else{
+			alert("The passwords don't match")
+		}
 	}
 
 
 
   function sendFormToDB(){
-    Axios.post("http://localhost:3001/register", {
+    Axios.post("https://loginsystemlib.herokuapp.com/register", {
+			name: UserName,
       login: UserLogin,
       password: pass
     }) 
@@ -50,6 +58,7 @@ export default function signUp(){
 				<form>
 					<h1>Cadastro</h1>
 					<div>
+						<input placeholder='Seu nome' type="text" name="name"    onChange={e => setNameHandle(e.target.value)}/>
 						<input placeholder='Login' type="text" name="login"    onChange={e => setLoginHandle(e.target.value)}/>
 						<input placeholder='Senha'type="password" name="password" onChange={e => setPassHandle (e.target.value)}/>
 						<input placeholder='Senha novamente'type="password" name="password" onChange={e => setConfirmPassHandle (e.target.value)}/>
