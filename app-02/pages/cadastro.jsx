@@ -55,7 +55,7 @@ export default function SignUp(){
 	return(
 		<Main>
 			<div>
-				<form>
+				<form onSubmit={ () => {} }>
 					<h1>Cadastro</h1>
 					<div>
 						<input placeholder='Seu nome' type="text" name="name"    onChange={e => setNameHandle(e.target.value)}/>
