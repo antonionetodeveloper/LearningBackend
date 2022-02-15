@@ -42,8 +42,8 @@ export default function SignUp(){
 
 
 
-  function sendFormToDB(){
-    Axios.post("https://loginsystemlib.herokuapp.com/register", {
+  async function sendFormToDB(){
+    const response = await Axios.post("https://loginsystemlib.herokuapp.com/register", {
 			name: UserName,
       login: UserLogin,
       password: pass
