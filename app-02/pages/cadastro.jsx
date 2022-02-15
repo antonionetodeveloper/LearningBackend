@@ -52,6 +52,26 @@ export default function SignUp(){
 			window.location.replace("https://login-system-omega.vercel.app/");
 			alert("Conta criada com sucesso!")
 		}
+
+		try{
+			const response = await Axios.post("https://loginsystemlib.herokuapp.com/register", {
+				name: UserName,
+				login: UserLogin,
+				password: pass
+    	}) 
+			
+			
+			if(response.status == 201){
+				window.location.replace("https://login-system-omega.vercel.app/");
+				alert("Conta criada com sucesso!")
+			}else{
+				alert("Algum erro aconteceu e não foi possível criar a conta")
+			}
+			
+		}
+			catch(error){
+				console.log(error)
+		}
 		
   }
 
