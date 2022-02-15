@@ -48,8 +48,11 @@ export default function SignUp(){
       login: UserLogin,
       password: pass
     }) 
-		window.location.replace("https://login-system-omega.vercel.app/");
-		alert("Conta criada com sucesso!")
+		if(response.status == 201){
+			window.location.replace("https://login-system-omega.vercel.app/");
+			alert("Conta criada com sucesso!")
+		}
+		
   }
 
 	return(
