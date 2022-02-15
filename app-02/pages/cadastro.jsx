@@ -43,15 +43,6 @@ export default function SignUp(){
 
 
   async function sendFormToDB(){
-    const response = await Axios.post("https://loginsystemlib.herokuapp.com/register", {
-			name: UserName,
-      login: UserLogin,
-      password: pass
-    }) 
-		if(response.status == 201){
-			window.location.replace("https://login-system-omega.vercel.app/");
-			alert("Conta criada com sucesso!")
-		}
 
 		try{
 			const response = await Axios.post("https://loginsystemlib.herokuapp.com/register", {
