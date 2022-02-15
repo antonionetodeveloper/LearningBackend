@@ -21,7 +21,10 @@ export default function Home() {
         setLoginHandle('')
         setPassHandle('')
         
+        console.log(`Status do servidor fora -> ${response.status}`);
+        
         if(response.status == 201){
+          console.log(`Status do servidor dentro -> ${response.status}`);
           window.location.href = "https://login-system-omega.vercel.app/dashboard";
         }else{
           alert("Usuário ou senha incorreta.")
@@ -57,7 +60,7 @@ export default function Home() {
             <input placeholder='login' type="text" name="login"         onChange={e => setLoginHandle(e.target.value)}/>
             <input placeholder='senha' type="password" name="password"  onChange={e => setPassHandle (e.target.value)}/>
           </div>
-          <Button type='submit' onClick={() => {checkIfUserExists()}}>
+          <Button type='button' onClick={() => {checkIfUserExists()}}>
             <span>Entrar</span>
             <img src="/button.svg" alt="" />
           </Button>
