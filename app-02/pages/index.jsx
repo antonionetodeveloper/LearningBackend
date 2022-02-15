@@ -54,13 +54,13 @@ export default function Home() {
   return (
     <Main>
       <div>
-        <form onSubmit={() => {checkIfUserExists()}}>
+        <form onSubmit={() => {}}>
           <h1>LOGIN</h1>
           <div>
             <input placeholder='login' type="text" name="login"         onChange={e => setLoginHandle(e.target.value)}/>
             <input placeholder='senha' type="password" name="password"  onChange={e => setPassHandle (e.target.value)}/>
           </div>
-          <Button type='submit'>
+          <Button type='button' onClick={() => {checkIfUserExists()}}>
             <span>Entrar</span>
             <img src="/button.svg" alt="" />
           </Button>
