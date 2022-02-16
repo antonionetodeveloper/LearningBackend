@@ -6,6 +6,7 @@ import { Main } from '../styles/signUp'
 import  Axios  from 'axios'
 import { useState } from 'react'
 import { Button } from '../styles/components/button'
+import  Loading  from '../styles/components/loading'
 
 
 export default function SignUp(){
@@ -40,21 +41,29 @@ export default function SignUp(){
 		}
 	}
 
-
+  const [isLoading, setIsLoading] = useState("notLoading")
 
   async function sendFormToDB(){
-		
 		try{
+			setIsLoading("Loading")
 			const response = await Axios.post("https://loginsystemlib.herokuapp.com/register", {
 				name: UserName,
 				login: UserLogin,
 				password: pass
     	}) 
 
+			document.querySelector('.nameInput').value  = ''
+			document.querySelector('.loginInput').value = ''
+			document.querySelector('.pass1Input').value = ''
+			document.querySelector('.pass2Input').value = ''
+			
+
 			if(response.status == 201){
-				window.location.replace("https://login-system-omega.vercel.app/");
+				setIsLoading('notLoading')
 				alert("Conta criada com sucesso!")
+				window.location.replace("https://login-system-omega.vercel.app/dashboard");
 			}else{
+				setIsLoading("notLoading")
 				alert("Uma conta com esse login provavelmente já existe... Por favor, use outra.")
 			}
 		}
@@ -65,23 +74,26 @@ export default function SignUp(){
   }
 
 	return(
-		<Main>
-			<div>
-				<form onSubmit={ () => {} }>
-					<h1>Cadastro</h1>
-					<div>
-						<input placeholder='Seu nome' type="text" name="name"    onChange={e => setNameHandle(e.target.value)}/>
-						<input placeholder='Login' type="text" name="login"    onChange={e => setLoginHandle(e.target.value)}/>
-						<input placeholder='Senha'type="password" name="password" onChange={e => setPassHandle (e.target.value)}/>
-						<input placeholder='Senha novamente'type="password" name="password" onChange={e => setConfirmPassHandle (e.target.value)}/>
-					</div>
-					<Button type='button' onClick={() => {chekPassword(pass, confirmPass)}}>
-            <span>Criar Conta</span>
-            <img src="/button.svg" alt="" />
-          </Button>
-				</form>
-				<Link href="/">Já tenho uma conta</Link>
-			</div>
-		</Main>
+		<>
+			<Loading isVisible={isLoading}/>
+			<Main>
+				<div>
+					<form onSubmit={ () => {} }>
+						<h1>Cadastro</h1>
+						<div>
+							<input placeholder='Seu nome' type="text" name="name"    onChange={e => setNameHandle(e.target.value)} className='nameInput'/>
+							<input placeholder='Login' type="text" name="login"    onChange={e => setLoginHandle(e.target.value)} className='loginInput'/>
+							<input placeholder='Senha'type="password" name="password" onChange={e => setPassHandle (e.target.value)} className='pass1Input'/>
+							<input placeholder='Senha novamente'type="password" name="password" onChange={e => setConfirmPassHandle (e.target.value)} className='pass2Input'/>
+						</div>
+						<Button type='button' onClick={() => {chekPassword(pass, confirmPass)}}>
+							<span>Criar Conta</span>
+							<img src="/button.svg" alt="" />
+						</Button>
+					</form>
+					<Link href="/">Já tenho uma conta</Link>
+				</div>
+			</Main>
+		</>
 	)
 }

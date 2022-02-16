@@ -4,8 +4,11 @@ import styled from "styled-components";
 
 export const Main = styled.main`
 	&{
-		height: 100vh;
 		display: flex;
+		height: 100vh;
+
+		position: relative;
+		z-index: 1;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
@@ -19,7 +22,7 @@ export const Main = styled.main`
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			z-index: 1;
+			z-index: 2;
 
 			background-color: #DDBEA9;
 			color: #6B705C;
