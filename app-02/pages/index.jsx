@@ -55,6 +55,9 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Login</title>
+      </Head>
       <Loading isVisible={isLoading}/>
       <Main>
         <div>

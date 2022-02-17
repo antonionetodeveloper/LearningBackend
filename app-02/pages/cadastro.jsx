@@ -75,6 +75,9 @@ export default function SignUp(){
 
 	return(
 		<>
+			<Head>
+        <title>Cadastro</title>
+      </Head>
 			<Loading isVisible={isLoading}/>
 			<Main>
 				<div>
